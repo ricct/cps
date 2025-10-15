@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cloud Pilot Station (CPS) — Simple Native Control for OCI & AWS</title>
+  <meta name="description" content="Cloud Pilot Station (CPS) is a simple native desktop app to monitor and control OCI & AWS resources (Compute/EC2, Database) from one clean console." />
+  <meta name="theme-color" content="#0288D1" />
+  <style>
+    :root{
+      --blue:#0288D1;--blue2:#2E75B6;--ink:#0f172a;--ink-2:#334155;--muted:#64748b;
+      --bg:#f8fafc;--card:#ffffff;--ring:#e2e8f0;--accent:#E8F4FD;--success:#0ea5e9;
+      --radius:16px;--shadow:0 8px 24px rgba(2, 136, 209, .08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg);line-height:1.6}
+    a{color:var(--blue);text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .nav .brand{display:flex;gap:12px;align-items:center}
+    .brand svg{height:40px;width:40px}
+    .brand .name{font-weight:800;letter-spacing:.2px}
+    .hero{display:grid;gap:28px;grid-template-columns:1.3fr 1fr;align-items:center;padding:36px;background:linear-gradient(135deg, #E8F4FD 0%, #F6FAFF 100%);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero h1{font-size:clamp(28px, 4.2vw, 44px);margin:0 0 8px}
+    .hero p{color:var(--ink-2);margin:0}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid var(--ring);background:#fff;color:var(--ink);font-weight:600}
+    .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .btn.secondary{background:#fff}
+    .pill{font-size:12px;padding:6px 10px;border-radius:999px;background:#EEF6FF;color:#0b4a7a;font-weight:700;display:inline-block;margin-bottom:10px}
+    .section{margin-top:48px}
+    .grid{display:grid;gap:18px}
+    .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .muted{color:var(--muted)}
+    .how{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .step{position:relative;padding-top:10px}
+    .step .num{position:absolute;top:-10px;left:-10px;background:var(--blue2);color:#fff;width:28px;height:28px;border-radius:999px;display:grid;place-items:center;font-weight:800}
+    .screen{height:260px;border-radius:14px;border:1px dashed var(--ring);background:
+      radial-gradient(180px 120px at 30% 20%, rgba(46,117,182,.08), transparent 70%),
+      radial-gradient(220px 140px at 70% 60%, rgba(2,136,209,.08), transparent 70%),
+      #fff;
+      display:grid;place-items:center;color:var(--muted);font-weight:600}
+    .faq dt{font-weight:700;margin-top:10px}
+    .faq dd{margin:6px 0 14px}
+    .footer{margin-top:56px;padding:18px 0;color:var(--muted);font-size:14px}
+    @media (max-width:960px){.hero{grid-template-columns:1fr}}
+    @media (max-width:720px){.cards,.how{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Top nav -->
+    <header class="nav">
+      <div class="brand">
+        <!-- Inline SVG logo (cloud + station) -->
+        <svg viewBox="0 0 128 128" aria-label="CPS logo" role="img">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0288D1"/><stop offset="1" stop-color="#2E75B6"/>
+            </linearGradient>
+          </defs>
+          <circle cx="64" cy="64" r="62" fill="url(#g)"/>
+          <!-- cloud -->
+          <path d="M38 48a14 14 0 0 1 23-10a18 18 0 0 1 31 10h2a12 12 0 0 1 0 24H36a12 12 0 0 1 2-24z" fill="#fff"/>
+          <!-- station panel -->
+          <rect x="30" y="78" width="68" height="20" rx="6" fill="#fff"/>
+          <rect x="36" y="83" width="8" height="10" rx="2" fill="#2E75B6"/>
+          <rect x="48" y="83" width="8" height="10" rx="2" fill="#2E75B6"/>
+          <rect x="60" y="83" width="16" height="10" rx="2" fill="#2E75B6"/>
+          <rect x="80" y="83" width="8" height="10" rx="2" fill="#2E75B6"/>
+          <rect x="92" y="83" width="6" height="10" rx="2" fill="#2E75B6"/>
+        </svg>
+        <div class="name">Cloud Pilot Station</div>
+      </div>
+      <nav><a href="#download">Download</a></nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <span class="pill">Simple Native Control for OCI & AWS</span>
+        <h1>Operate Compute & Database from one clean console.</h1>
+        <p>Cloud Pilot Station (CPS) is a lightweight desktop app that lets you <strong>monitor</strong> and <strong>start/stop</strong> resources across Oracle Cloud Infrastructure and AWS — without switching consoles.</p>
+        <div class="btns">
+          <a class="btn primary" href="#download">Download for Windows</a>
+          <a class="btn secondary" href="#features">See Features</a>
+        </div>
+      </div>
+      <div class="screen">Splash / App preview placeholder</div>
+    </section>
+
+    <!-- Key features -->
+    <section id="features" class="section">
+      <h2>Why CPS</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>Unified Control</h3>
+          <p class="muted">One panel to monitor and operate <strong>OCI Compute</strong>, <strong>AWS EC2</strong>, and (soon) <strong>DB services</strong> such as Autonomous DB / RDS.</p>
+        </article>
+        <article class="card">
+          <h3>Native & Fast</h3>
+          <p class="muted">No heavy web shells. A native desktop experience built with .NET for smooth, responsive operations.</p>
+        </article>
+        <article class="card">
+          <h3>Safe Operations</h3>
+          <p class="muted">Dry-run prompts, guard rails, and profile-based execution (OCI/AWS) to prevent mistakes.</p>
+        </article>
+        <article class="card">
+          <h3>Profile-Aware</h3>
+          <p class="muted">Respects your CLI profiles (regions/credentials). Pick target tenancy/account per action.</p>
+        </article>
+        <article class="card">
+          <h3>Search & Filter</h3>
+          <p class="muted">Quickly find instances by name, tags, lifecycle state, or region.</p>
+        </article>
+        <article class="card">
+          <h3>Extensible</h3>
+          <p class="muted">Modular connectors for future services: databases, autoscaling, and scheduled jobs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section">
+      <h2>How it Works</h2>
+      <div class="grid how">
+        <div class="card step">
+          <div class="num">1</div>
+          <h3>Connect</h3>
+          <p class="muted">CPS detects <code>~/.oci/config</code> and AWS profiles. Choose a profile and region.</p>
+        </div>
+        <div class="card step">
+          <div class="num">2</div>
+          <h3>Discover</h3>
+          <p class="muted">CPS lists instances and DB services with status. Filter by state, tag, or name.</p>
+        </div>
+        <div class="card step">
+          <div class="num">3</div>
+          <h3>Operate</h3>
+          <p class="muted">Start/stop or open details. Built-in confirmations keep operations safe.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots placeholder -->
+    <section class="section">
+      <h2>Screenshots</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
+        <div class="screen">Dashboard</div>
+        <div class="screen">Instance List</div>
+        <div class="screen">Action Prompt</div>
+      </div>
+    </section>
+
+    <!-- Security & Privacy -->
+    <section class="section">
+      <h2>Security & Privacy</h2>
+      <div class="card">
+        <p class="muted">
+          CPS runs locally and uses your existing OCI/AWS credentials. No credentials are sent to third-party servers.
+          Actions are executed via official CLIs/SDKs according to your profiles and policies.
+        </p>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="section">
+      <h2>Download</h2>
+      <div class="card">
+        <p><strong>Windows</strong> (.NET 8 runtime required). macOS & Linux builds are planned.</p>
+        <div class="btns">
+          <a class="btn primary" href="#">Download CPS for Windows</a>
+          <a class="btn" href="#">Checksum</a>
+          <a class="btn" href="#">Release Notes</a>
+        </div>
+        <p class="muted" style="margin-top:10px">System requirements: Windows 10/11, x64/ARM64, .NET Desktop Runtime 8+, network access to OCI/AWS endpoints.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Does CPS change my cloud settings?</dt>
+        <dd>No. CPS only performs the operations you confirm (e.g., start/stop). It does not alter policies or network configs.</dd>
+        <dt>Which services are supported?</dt>
+        <dd>OCI Compute, AWS EC2 at launch. Database operations (Autonomous DB / RDS) are on the roadmap.</dd>
+        <dt>How do I switch regions or accounts?</dt>
+        <dd>Choose a profile/region from the header selector. CPS reads your CLI profiles and applies them per action.</dd>
+      </dl>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> Cloud Pilot Station (CPS). All rights reserved.</div>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
