@@ -88,7 +88,7 @@
           <a class="btn secondary" href="#features">See Features</a>
         </div>
       </div>
-      <div class="screen">Splash / App preview placeholder</div>
+      <div class="screen"><img style="height:260px" src="./img/screen1.png"></img></div>
     </section>
 
     <!-- Key features -->
@@ -104,20 +104,8 @@
           <p class="muted">No heavy web shells. A native desktop experience built with .NET for smooth, responsive operations.</p>
         </article>
         <article class="card">
-          <h3>Safe Operations</h3>
-          <p class="muted">Dry-run prompts, guard rails, and profile-based execution (OCI/AWS) to prevent mistakes.</p>
-        </article>
-        <article class="card">
-          <h3>Profile-Aware</h3>
-          <p class="muted">Respects your CLI profiles (regions/credentials). Pick target tenancy/account per action.</p>
-        </article>
-        <article class="card">
           <h3>Search & Filter</h3>
           <p class="muted">Quickly find instances by name, tags, lifecycle state, or region.</p>
-        </article>
-        <article class="card">
-          <h3>Extensible</h3>
-          <p class="muted">Modular connectors for future services: databases, autoscaling, and scheduled jobs.</p>
         </article>
       </div>
     </section>
@@ -145,6 +133,7 @@
     </section>
 
     <!-- Screenshots placeholder -->
+    <!--
     <section class="section">
       <h2>Screenshots</h2>
       <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
@@ -153,7 +142,7 @@
         <div class="screen">Action Prompt</div>
       </div>
     </section>
-
+    -->
     <!-- Security & Privacy -->
     <section class="section">
       <h2>Security & Privacy</h2>
@@ -171,8 +160,7 @@
       <div class="card">
         <p><strong>Windows</strong> (.NET 8 runtime required). macOS & Linux builds are planned.</p>
         <div class="btns">
-          <a class="btn primary" href="#">Download CPS for Windows</a>
-          <a class="btn" href="#">Checksum</a>
+          <a class="btn primary" href="./bin/CloudPilotStationSetup2_0_0.zip">Download CPS for Windows Ver2.0</a>
           <a class="btn" href="#">Release Notes</a>
         </div>
         <p class="muted" style="margin-top:10px">System requirements: Windows 10/11, x64/ARM64, .NET Desktop Runtime 8+, network access to OCI/AWS endpoints.</p>
@@ -186,9 +174,9 @@
         <dt>Does CPS change my cloud settings?</dt>
         <dd>No. CPS only performs the operations you confirm (e.g., start/stop). It does not alter policies or network configs.</dd>
         <dt>Which services are supported?</dt>
-        <dd>OCI Compute, AWS EC2 at launch. Database operations (Autonomous DB / RDS) are on the roadmap.</dd>
+        <dd>OCI Compute ,Base Databasse ,Autonomous DB.<br />AWS EC2 , RDS.</dd>
         <dt>How do I switch regions or accounts?</dt>
-        <dd>Choose a profile/region from the header selector. CPS reads your CLI profiles and applies them per action.</dd>
+        <dd>Choose a profile/region at setting form. CPS reads your profiles and applies them per action.</dd>
       </dl>
     </section>
 
